@@ -6,12 +6,12 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
+          key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
           name: Install
-          command: yarn install --frozen-lockfile
+          command: npm ci
       - save_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
+          key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
   build:
@@ -20,11 +20,11 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
+          key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
           name: Build
           command: |
-            yarn build
+            npm run build
             ls dist
       - save_cache:
           key: build-output-{{ .Environment.CIRCLE_SHA1 }}
@@ -39,10 +39,10 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
+          key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
           name: Test and Lint
-          command: yarn lint && yarn test:unit
+          command: npm run lint && npm run test
   deploy:
     docker:
       - image: google/cloud-sdk
@@ -57,7 +57,7 @@ jobs:
             echo "Going to correct directory"
             cd /home/circleci/project/
             ls dist
-            ls dist/js
+            ls dist/navbar
             echo "Creating google application credentials json file"
             echo $GOOGLE_APPLICATION_CREDENTIALS_JSON > google-application-credentials.json
             echo "Authenticating with Google"
