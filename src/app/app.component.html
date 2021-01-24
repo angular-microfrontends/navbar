@@ -1,6 +1,15 @@
 <div class="root">
-  <h3>{{ title }}</h3>
-  <div class="note">Angular {{ ngVersion.full }}</div>
+
+  <div class="title">
+    <h3>{{ title }}</h3>
+    <div class="note">Angular {{ ngVersion.full }}</div>
+  </div>
+
+  <div class="links">
+    <a routerLink="/play">Play</a>
+    <a routerLink="/stats">Stats</a>
+  </div>
 
   <router-outlet></router-outlet>
+
 </div>
