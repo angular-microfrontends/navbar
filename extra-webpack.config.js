@@ -1,9 +1,13 @@
 const singleSpaAngularWebpack = require('single-spa-angular/lib/webpack').default;
+const SystemJSPublicPathWebpackPlugin = require("systemjs-webpack-interop/SystemJSPublicPathWebpackPlugin");
 
-module.exports = config => {
-  const singleSpaWebpackConfig = singleSpaAngularWebpack(config);
+module.exports = (config, options) => {
+  const singleSpaWebpackConfig = singleSpaAngularWebpack(config, options);
 
-  singleSpaWebpackConfig.externals.push('@angular/core', '@angular/platform-browser', '@angular/router', '@angular/common', 'rxjs', 'rxjs/operators')
+  singleSpaWebpackConfig.plugins.push(new SystemJSPublicPathWebpackPlugin({
+    // ONLY NEEDED FOR WEBPACK 1-4. Not necessary for webpack@5
+    systemjsModuleName: "@angular-mf/navbar"
+  }));
 
   // Feel free to modify this webpack config however you'd like to
   return singleSpaWebpackConfig;

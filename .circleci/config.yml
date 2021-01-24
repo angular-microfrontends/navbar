@@ -42,7 +42,7 @@ jobs:
           key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
           name: Test and Lint
-          command: npm run lint
+          command: npm run lint && npm run test
   deploy:
     docker:
       - image: google/cloud-sdk
