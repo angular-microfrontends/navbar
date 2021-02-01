@@ -9,6 +9,12 @@ module.exports = (config, options) => {
     systemjsModuleName: "@angular-mf/navbar"
   }));
 
+  singleSpaWebpackConfig.externals.push(/^@angular\/.+$/)
+
+  singleSpaWebpackConfig.output.libraryTarget = 'system'
+
+  delete singleSpaWebpackConfig.output.library
+
   // Feel free to modify this webpack config however you'd like to
   return singleSpaWebpackConfig;
 };
