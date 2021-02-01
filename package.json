@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:single-spa:navbar": "ng build navbar --prod --deploy-url http://localhost:4201/",
+    "build:single-spa:navbar": "ng build navbar --prod",
     "serve:single-spa:navbar": "ng s --project navbar --disable-host-check --port 4201 --deploy-url http://localhost:4201/ --live-reload false"
   },
   "private": true,
