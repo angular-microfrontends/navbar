@@ -67,8 +67,8 @@ jobs:
             echo "Commit sha is $CIRCLE_SHA1. This will be the directory name under $CIRCLE_PROJECT_REPONAME in Cloud Storage."
 
             echo "Uploading module"
-            mv dist/'"CIRCLE_PROJECT_REPONAME"'/index.html .
-            gsutil cp -rZ dist/'"CIRCLE_PROJECT_REPONAME"' gs://$BUCKET_NAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_SHA1
+            mv dist/$CIRCLE_PROJECT_REPONAME/index.html .
+            gsutil cp -rZ dist/$CIRCLE_PROJECT_REPONAME gs://$BUCKET_NAME/$CIRCLE_PROJECT_REPONAME/$CIRCLE_SHA1
             echo "Updating import map"
             echo '{ "service":"@angular-mf/'"$CIRCLE_PROJECT_REPONAME"'","url":"https://'"$CF_PUBLIC_URL"'/'"$CIRCLE_PROJECT_REPONAME"'/'"$CIRCLE_SHA1"'/angular-mf-'"$CIRCLE_PROJECT_REPONAME"'.js" }'
             curl -u $DEPLOYER_USERNAME:$DEPLOYER_PASSWORD -d '{ "service":"@angular-mf/'"$CIRCLE_PROJECT_REPONAME"'","url":"https://'"$CF_PUBLIC_URL"'/'"$CIRCLE_PROJECT_REPONAME"'/'"$CIRCLE_SHA1"'/angular-mf-'"$CIRCLE_PROJECT_REPONAME"'.js" }' -X PATCH http://$DEPLOYER_HOST/services\?env=$DEPLOYER_ENV -H "Accept:application/json" -H "Content-Type:application/json" --fail --insecure -i
