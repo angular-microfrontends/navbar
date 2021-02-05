@@ -41,7 +41,7 @@
             "customWebpackConfig": {
               "path": "extra-webpack.config.js",
               "libraryName": "navbar",
-              "libraryTarget": "umd"
+              "libraryTarget": "system"
             }
           },
           "configurations": {
