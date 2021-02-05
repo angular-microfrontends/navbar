@@ -9,19 +9,6 @@ module.exports = (config, options) => {
     systemjsModuleName: "@angular-mf/navbar"
   }));
 
-  singleSpaWebpackConfig.externals.push(
-    // /^@angular\/.+$/,
-    '@angular/common',
-    '@angular/core',
-    '@angular/platform-browser',
-    '@angular/router',
-    'rxjs',
-    'rxjs/operators',
-    'single-spa',
-    'single-spa-angular',
-    // 'tslib',
-  );
-
   // Feel free to modify this webpack config however you'd like to
   return singleSpaWebpackConfig;
 };
