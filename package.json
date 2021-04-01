@@ -1,5 +1,5 @@
 {
-  "name": "@angular-mf/navbar",
+  "name": "@angular-microfrontends/navbar",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
