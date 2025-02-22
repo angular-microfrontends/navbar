@@ -35,7 +35,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dist
-          path: dist
+          path: dist/${{ github.event.repository.name }}/browser
 
   release:
     name: Release
@@ -74,4 +74,4 @@ jobs:
           environment-name: angular
           service-name: "@angular-microfrontends/${{ github.event.repository.name }}"
           service-url: "https://angular.microfrontends.app/${{ github.event.repository.name }}/${{ github.run_id }}/main.js"
-          service-integrity-file-path: js/app.js
+          service-integrity-file-path: main.js
