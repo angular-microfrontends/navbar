@@ -1,41 +1,30 @@
-import { VERSION } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideExperimentalZonelessChangeDetection } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { RouterModule } from '@angular/router';
 
 describe('AppComponent', () => {
-  let fixture: ComponentFixture<AppComponent>;
-  let app: AppComponent;
-
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule,
-      ],
-      declarations: [
-        AppComponent,
-      ],
+      imports: [AppComponent, RouterModule.forRoot([])],
+      providers: [provideExperimentalZonelessChangeDetection()]
     }).compileComponents();
-    fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    app = fixture.componentInstance;
   });
 
   it('should create the app', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it('should have "navbar" as title', () => {
-    expect(app.title).toEqual('navbar');
-  });
-
   it('should render title', () => {
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('h3').textContent).toBe('navbar');
-  });
-
-  it('should display Angular version', () => {
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('div.note').textContent).toBe(`Angular ${VERSION.full}`);
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    const links: (string | null)[] = [];
+    compiled.querySelectorAll('a').forEach(a => {
+      links.push(a.textContent!.trim())
+    });
+    expect(links).toEqual(["Home", "Rate Doggos", "View Doggos"]);
   });
 });

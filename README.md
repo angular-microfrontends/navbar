@@ -1,69 +1,59 @@
-# Navbar
+# AngularMfeNavbar
 
-[![CircleCI](https://circleci.com/gh/angular-microfrontends/navbar.svg?style=svg)](https://circleci.com/gh/angular-microfrontends/navbar)
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.8.
 
-## What is this?
+## Development server
 
-This is an example microfrontend repo demonstrating how to use [single-spa](https://single-spa.js.org). You can see the code running at https://angular.microfrontends.app.
+To start a local development server, run:
 
-## How does it work?
-
-[Full article](https://single-spa.js.org/docs/recommended-setup)
-
-This repository is a javascript project that creates a javascript bundle that is an in-browser javascript module (explanation on [youtube](https://www.youtube.com/watch?v=Jxqiu6pdMSU&list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU&index=2) / [bilibili](https://www.bilibili.com/video/av83498486/)). The currently deployed version of the in-browser module can be seen at https://angular.microfrontends.app/importmap.json.
-
-This project uses [Angular](https://angular.io) and was created with the [create-single-spa](https://single-spa.js.org/docs/create-single-spa) CLI. It uses webpack and babel.
-
-Whenever a pull request is merged to master, [CircleCI builds and deploys the project](https://circleci.com/gh/angular-microfrontends/navbar). The ["workflows" view](https://circleci.com/gh/angular-microfrontends/workflows) (pictured below) can be seen if you are logged into CircleCI. Deployments for this in-browser module are completely independent of deployments for any other module.
-
-![image](https://user-images.githubusercontent.com/5524384/75210801-5ba02700-573f-11ea-8064-46af165cba0a.png)
-
-## Local development
-
-[Full documentation](https://single-spa.js.org/docs/recommended-setup#local-development)
-
-Tutorial video: [youtube](https://www.youtube.com/watch?v=vjjcuIxqIzY&list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU&index=4) / [bilibili](https://www.bilibili.com/video/av83617789/)
-
-There are two ways to do local development. It is preferred to do one module at a time, whenever possible.
-
-### One module at a time
-
-```sh
-cd navbar
-yarn install
-yarn serve
+```bash
+ng serve
 ```
 
-Note that you may use whichever port you would like to. Go to https://localhost:8501/main.js and verify that you are able to load the file without any SSL problems. To solve SSL problems, see [these instructions](https://improveandrepeat.com/2016/09/allowing-self-signed-certificates-on-localhost-with-chrome-and-firefox/).
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-Now, go to https://angular.microfrontends.app. In the browser console, run the following:
+## Code scaffolding
 
-```js
-localStorage.setItem('devtools', true);
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+
+```bash
+ng generate component component-name
 ```
 
-Refresh the page. Click on the tan / beige rectangle:
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
-![image](https://user-images.githubusercontent.com/5524384/75211359-e46b9280-5740-11ea-80bb-974846df414b.png)
-
-Set an [import map override](https://github.com/joeldenning/import-map-overrides/) to `https://localhost:8501/main.js`.
-
-![image](https://user-images.githubusercontent.com/5524384/75211553-7e333f80-5741-11ea-97d6-d3d86ffd1826.png)
-
-Refresh the page. Your local code for this module will now be running on https://angular.microfrontends.app. You may make changes locally and refresh the page to see them.
-
-### All modules together
-
-Run the root-config project locally:
-
-```
-cd root-config
-yarn install
-yarn start
+```bash
+ng generate --help
 ```
 
-Now follow the steps above for "One module at a time" for each of the modules you wish to work on.
+## Building
 
-## Adapting for your organization
+To build the project run:
 
-Feel free to fork and modify any files you would like when doing a proof of concept for your organization. When it's time to actually create / adapt your organization's projects, consider using [create-single-spa](https://single-spa.js.org/docs/create-single-spa) instead of forking this repository.
+```bash
+ng build
+```
+
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+
+## Running unit tests
+
+To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+
+```bash
+ng test
+```
+
+## Running end-to-end tests
+
+For end-to-end (e2e) testing, run:
+
+```bash
+ng e2e
+```
+
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
