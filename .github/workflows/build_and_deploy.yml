@@ -62,7 +62,7 @@ jobs:
       - name: Upload Static Files to CDN
         uses: "google-github-actions/upload-cloud-storage@v2"
         with:
-          path: ${{ github.event.repository.name }}/browser
+          path: .
           destination: react.microfrontends.app/${{ github.event.repository.name }}/${{ github.run_id }}
 
       - name: Update Import Map
