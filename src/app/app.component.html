@@ -1,15 +1,11 @@
-<div class="root">
+<a routerLink="/">
+  Home
+</a>
+<a routerLink="/rate-doggos">
+  Rate Doggos
+</a>
+<a routerLink="/view-doggos">
+  View Doggos
+</a>
 
-  <div class="title">
-    <h3>{{ title }}</h3>
-    <div class="note">Angular {{ ngVersion.full }}</div>
-  </div>
-
-  <div class="links">
-    <a routerLink="/play">Play</a>
-    <a routerLink="/stats">Stats</a>
-  </div>
-
-  <router-outlet></router-outlet>
-
-</div>
+<router-outlet />

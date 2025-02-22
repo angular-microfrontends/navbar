@@ -1,123 +1,96 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "cli": {
-    "packageManager": "pnpm",
-    "defaultCollection": "@angular-eslint/schematics"
-  },
   "newProjectRoot": "projects",
   "projects": {
     "navbar": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "sass"
-        },
-        "@schematics/angular:application": {
-          "strict": true
-        }
-      },
+      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "navbar",
       "architect": {
         "build": {
-          "builder": "@angular-builders/custom-webpack:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/navbar",
             "index": "src/index.html",
-            "main": "src/main.single-spa.ts",
-            "polyfills": "src/polyfills.ts",
+            "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": true,
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
             ],
             "styles": [
-              "src/styles.sass"
+              "src/styles.css"
             ],
-            "scripts": [],
-            "customWebpackConfig": {
-              "path": "extra-webpack.config.js",
-              "libraryName": "navbar",
-              "libraryTarget": "system"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "none",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
                 }
-              ]
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
             }
-          }
+          },
+          "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-builders/custom-webpack:dev-server",
+          "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "navbar:build"
+            "headers": {
+              "Access-Control-Allow-Origin": "*"
+            }
           },
           "configurations": {
             "production": {
-              "browserTarget": "navbar:build:production"
+              "buildTarget": "navbar:build:production"
+            },
+            "development": {
+              "buildTarget": "navbar:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "navbar:build"
-          }
+          "builder": "@angular-devkit/build-angular:extract-i18n"
         },
         "test": {
-          "builder": "@angular-builders/jest:run",
-          "options": {}
-        },
-        "lint": {
-          "builder": "@angular-eslint/builder:lint",
+          "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
-          }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "navbar:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "navbar:serve:production"
-            }
+            "polyfills": [
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],
+            "styles": [
+              "src/styles.css"
+            ],
+            "scripts": []
           }
         }
       }
     }
-  },
-  "defaultProject": "navbar"
+  }
 }
