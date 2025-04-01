@@ -11,7 +11,7 @@ import { SINGLE_SPA_PROPS, SingleSpaProps } from './single-spa-props';
 })
 export class AppComponent {
   title = 'angular-mfe-navbar';
-  declare singleSpaProps: SingleSpaProps;
+  protected singleSpaProps: SingleSpaProps;
   constructor(@Inject(SINGLE_SPA_PROPS) singleSpaProps: SingleSpaProps) {
     this.singleSpaProps = singleSpaProps;
   }
