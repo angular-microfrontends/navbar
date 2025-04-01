@@ -6,8 +6,7 @@ import { SINGLE_SPA_PROPS, SingleSpaProps } from './single-spa-props';
   selector: 'navbar-root',
   imports: [RouterOutlet, RouterLink],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
-  providers: []
+  styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'angular-mfe-navbar';
