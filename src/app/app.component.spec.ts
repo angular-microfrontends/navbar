@@ -2,12 +2,17 @@ import { provideExperimentalZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
-import { ExtraProps, SINGLE_SPA_PROPS } from './single-spa-props'
+import { SingleSpaProps, SINGLE_SPA_PROPS } from './single-spa-props'
+import { mountRootParcel } from 'single-spa';
+import * as singleSpa from 'single-spa';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
-    const props: ExtraProps = {
-      favoriteDog: "Franklin is a good boy"
+    const props: SingleSpaProps = {
+      favoriteDog: "Franklin is a good boy",
+      mountParcel: mountRootParcel,
+      name: "test",
+      singleSpa
     }
 
     await TestBed.configureTestingModule({
