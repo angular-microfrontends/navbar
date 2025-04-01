@@ -42,7 +42,7 @@ importers:
         specifier: ^7.0.0-beta.3
         version: 7.0.0-beta.3
       single-spa-angular:
-        specifier: 10.0.0-beta.4
+        specifier: ^10.0.0-beta.4
         version: 10.0.0-beta.4(rxjs@7.8.2)(zone.js@0.15.0)
       tslib:
         specifier: ^2.3.0
