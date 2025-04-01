@@ -5,6 +5,6 @@ export const SINGLE_SPA_PROPS = new InjectionToken<SingleSpaProps>("single-spa p
 
 export type SingleSpaProps = AppProps<ExtraProps> & ExtraProps;
 
-interface ExtraProps {
+export interface ExtraProps {
   favoriteDog: string;
 }

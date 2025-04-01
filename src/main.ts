@@ -10,6 +10,3 @@ export const { bootstrap, mount, unmount } = singleSpaAngular<ExtraProps>({
   appConfig,
   propsInjectionToken: SINGLE_SPA_PROPS,
 });
-
-interface ExtraProps {
-}
