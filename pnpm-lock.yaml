@@ -39,8 +39,8 @@ importers:
         specifier: ~7.8.0
         version: 7.8.2
       single-spa:
-        specifier: 7.0.0-beta.1
-        version: 7.0.0-beta.1
+        specifier: ^7.0.0-beta.3
+        version: 7.0.0-beta.3
       single-spa-angular:
         specifier: 10.0.0-beta.4
         version: 10.0.0-beta.4(rxjs@7.8.2)(zone.js@0.15.0)
@@ -3691,9 +3691,6 @@ packages:
 
   single-spa@5.9.5:
     resolution: {integrity: sha512-9SQdmsyz4HSP+3gs6PJzhkaMEg+6zTlu9oxIghnwUX3eq+ajq4ft5egl0iyR55LAmO/UwvU8NgIWs/ZyQMa6dw==}
-
-  single-spa@7.0.0-beta.1:
-    resolution: {integrity: sha512-RMmRvSQ0wz95vZwmT7dRZS9liH9D/HETwNsQYoeuqLbo4kwrQv21GuDWqHHpUJchYk6MsrBcNBqt7gbScFxP3Q==}
 
   single-spa@7.0.0-beta.3:
     resolution: {integrity: sha512-uvL704bNHBp/uQ/HZL6KteXVoFCpfpDfBw9s5KCUO9kysoUZHhpEg9SColA9iVjXPyBeR2bEDbKDdXeU98onHw==}
@@ -8128,8 +8125,6 @@ snapshots:
       - zone.js
 
   single-spa@5.9.5: {}
-
-  single-spa@7.0.0-beta.1: {}
 
   single-spa@7.0.0-beta.3: {}
 
