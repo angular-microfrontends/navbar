@@ -37,6 +37,6 @@ describe('AppComponent', () => {
     compiled.querySelectorAll('a').forEach(a => {
       links.push(a.textContent!.trim())
     });
-    expect(links).toEqual(["Home", "Rate Doggos", "View Doggos"]);
+    expect(links).toEqual(["Home", "Rate Doggos", "View Dogs"]);
   });
 });
