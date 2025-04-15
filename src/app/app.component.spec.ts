@@ -3,14 +3,13 @@ import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { SingleSpaProps, SINGLE_SPA_PROPS } from './single-spa-props'
-import { mountRootParcel } from 'single-spa';
 import * as singleSpa from 'single-spa';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     const props: SingleSpaProps = {
       favoriteDog: "Franklin is a good boy",
-      mountParcel: mountRootParcel,
+      mountParcel: singleSpa.mountRootParcel,
       name: "test",
       singleSpa
     }
@@ -38,6 +37,6 @@ describe('AppComponent', () => {
     compiled.querySelectorAll('a').forEach(a => {
       links.push(a.textContent!.trim())
     });
-    expect(links).toEqual(["Home", "Rate Doggos", "View Doggos"]);
+    expect(links).toEqual(["Home", "Rate Doggos", "View Dogs"]);
   });
 });
